@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Dashboard.Models.Messages>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Messages for all Users</h2>
+<p>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.User.UserName)</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+
+        </tr>
+    }
+
+</table>

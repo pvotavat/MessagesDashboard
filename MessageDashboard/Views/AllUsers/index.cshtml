@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Dashboard.Models.ApplicationUser>
+@{
+    ViewBag.Title = "All Users List";
+}
+<h2>List of all the users</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+        </tr>
+    }
+</table>
