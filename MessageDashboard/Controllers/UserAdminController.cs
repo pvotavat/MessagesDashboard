@@ -129,7 +129,7 @@ namespace Dashboard.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "UserName,Id")] ApplicationUser formuser, string id, string RoleId)
+        public async Task<ActionResult> Edit([Bind(Include = "UserName,Id,FirstName,Lastname,IsActive")] ApplicationUser formuser, string id, string RoleId)
         {
             if (id == null)
             {

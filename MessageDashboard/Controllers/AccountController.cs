@@ -16,6 +16,7 @@ namespace Dashboard.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private MyDbContext db;
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new MyDbContext())))
         {
@@ -24,6 +25,7 @@ namespace Dashboard.Controllers
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
+            db = new MyDbContext();
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -47,10 +49,19 @@ namespace Dashboard.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
+                //user.MyUserInfo = User. UserManager.FindByIdAsync(user.Id);
+                //user.MyUserInfo.IsActive = db.MyUserInfo.ToList().Where(MyUserInfo => MyUserInfo.Id.ToString() == user.Id).FirstOrDefault().IsActive;
                 if (user != null)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    if (user.MyUserInfo.IsActive == true)
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "User is blocked.");
+                    }
                 }
                 else
                 {

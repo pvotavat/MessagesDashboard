@@ -2,11 +2,9 @@
 @{
     ViewBag.Title = "Edit";
 }
-
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
 </hgroup>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -29,18 +27,18 @@
             </div>
         </div>
         <div class="control-group">
-        @Html.LabelFor(m => m.MyUserInfo.LastName, new { @class = "control-label" })
-        <div class="controls">
-            @Html.TextBoxFor(m => m.MyUserInfo.LastName)
+            @Html.LabelFor(m => m.MyUserInfo.LastName, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(m => m.MyUserInfo.LastName)
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.MyUserInfo.IsActive, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(m => m.MyUserInfo.IsActive)
-            @Html.ValidationMessageFor(m => m.MyUserInfo.IsActive)
+        <div class="form-group">
+            @Html.LabelFor(m => m.MyUserInfo.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.MyUserInfo.IsActive)
+                @Html.ValidationMessageFor(m => m.MyUserInfo.IsActive)
+            </div>
         </div>
-    </div>
         <h4>Modify Role for User</h4>
         <hr />
         @Html.DropDownList("RoleId", "No Roles")
@@ -49,7 +47,6 @@
         </div>
     </fieldset>
 }
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

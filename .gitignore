@@ -161,3 +161,5 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+/MessageDashboard/$tf
+/aspnet-Dashboard-10_8_3.dacpac

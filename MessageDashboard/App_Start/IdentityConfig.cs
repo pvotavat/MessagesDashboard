@@ -27,14 +27,19 @@ namespace Dashboard
         {
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var myinfo = new MyUserInfo() { FirstName = "Prit", LastName = "Votavat" };
+            var myinfo = new MyUserInfo() { FirstName = "Prit", LastName = "Votavat", IsActive = true };
             string name = "Admin";
             string password = "123456";
-            string test = "test";
+            //string test = "test";
+            string Manager = "Manager";
 
             //Create Role Test and User Test
-            RoleManager.Create(new IdentityRole(test));
-            UserManager.Create(new ApplicationUser() { UserName = test });
+            //RoleManager.Create(new IdentityRole(test));
+            //UserManager.Create(new ApplicationUser() { UserName = test });
+
+            //Create Role Manager and user fort the Role
+            RoleManager.Create(new IdentityRole(Manager));
+            UserManager.Create(new ApplicationUser() { UserName =  Manager});
 
             //Create Role Admin if it does not exist
             if (!RoleManager.RoleExists(name))
